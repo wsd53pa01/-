@@ -1,4 +1,4 @@
-﻿@model List<HomeWork.Models.ViewModels.TableModels>
+﻿@model List<HomeWork.Models.ViewModel.TableModels>
 @{
     Layout = null;
 }
@@ -18,7 +18,7 @@
                 <tr>
                     <td>@item.Sharp</td>
                     <td>@item.Category</td>
-                    <td>@item.Date</td>
+                    <td>@item.Date.ToString("yyyy-MM-dd")</td>
                     <td>@item.Money</td>
                 </tr>
 

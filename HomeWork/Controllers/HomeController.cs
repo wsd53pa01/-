@@ -1,4 +1,4 @@
-﻿using HomeWork.Models.ViewModels;
+﻿using HomeWork.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,10 +36,10 @@ namespace HomeWork.Controllers
             var table = new List<TableModels>();
             for (var i = 0; i < 201; i++)
             {
-                var date = "";
-                var money = "";
-                 date = RandomDay().ToString("yyyy-mm-dd");
-                 money = RandomMoney().ToString();
+               
+             
+                var date = RandomDay();
+               var   money = RandomMoney();
                 table.Add(new TableModels { Sharp = i.ToString(), Category = "支出", Date = date, Money = money });
             }
 
