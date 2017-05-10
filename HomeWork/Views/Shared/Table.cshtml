@@ -16,10 +16,11 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.Sharp</td>
+                    <td>@item.Sharp.ToString().Substring(0,5)</td>
                     <td>@item.Category</td>
                     <td>@item.Date.ToString("yyyy-MM-dd")</td>
-                    <td>@item.Money</td>
+                    <td>@item.Money.ToString("#,###")</td>
+                    <td>@item.Remark</td>
                 </tr>
 
             }
