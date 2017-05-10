@@ -11,5 +11,6 @@ namespace HomeWork.Models.ViewModel
         public string Category { get; set; }
         public DateTime Date { get; set; }
         public int Money { get; set; }
+        public string Remark { get; set; }
     }
 }
