@@ -12,12 +12,13 @@
                 <th>類別</th>
                 <th>日期</th>
                 <th>金額</th>
+                <th>備註</th>
             </tr>
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.Sharp.ToString().Substring(0,5)</td>
-                    <td>@item.Category</td>
+                    <td >@item.Sharp.ToString().Substring(0, 5)</td>
+                    <td class= @(item.Category =="支出"?"alert-danger":"alert-info")>@item.Category</td>
                     <td>@item.Date.ToString("yyyy-MM-dd")</td>
                     <td>@item.Money.ToString("#,###")</td>
                     <td>@item.Remark</td>

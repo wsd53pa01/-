@@ -10,13 +10,36 @@ namespace HomeWork.Controllers
 
     public class HomeController : Controller
     {
+        SkillTreeModel db = new SkillTreeModel();
         public ActionResult Index()
         {
 
 
             return View();
         }
-         public ActionResult About()
+        // GET: AccountBooks/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: AccountBooks/Create
+        // 若要免於過量張貼攻擊，請啟用想要繫結的特定屬性，如需
+        // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Categoryyy,Amounttt,Dateee,Remarkkk")] AccountBook accountBook)
+        {
+            if (ModelState.IsValid)
+            {
+                accountBook.Id = Guid.NewGuid();
+                db.AccountBook.Add(accountBook);
+                db.SaveChanges();
+            }
+
+            return View(accountBook);
+        }
+        public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
@@ -32,7 +55,7 @@ namespace HomeWork.Controllers
         public ActionResult Table()
         {
 
-            var db = new SkillTreeModel();
+          
             var table = new List<TableModels>();
             foreach (var item in db.AccountBook)
             {
@@ -41,7 +64,7 @@ namespace HomeWork.Controllers
                         new TableModels
                         {
                             Sharp = item.Id,
-                            Category = item.Categoryyy == 1 ? "支出" : "收入",
+                            Category = item.Categoryyy == 1 ?    "支出"  : "收入",
                             Date = item.Dateee,
                             Money = item.Amounttt,
                             Remark = item.Remarkkk.Length > 6 ? item.Remarkkk.Substring(0, 6) : item.Remarkkk
